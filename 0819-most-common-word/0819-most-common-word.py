@@ -6,16 +6,11 @@ class Solution:
         paragraph = paragraph.replace('?',' ')
         paragraph = paragraph.replace(';',' ')
         paragraph = paragraph.replace("'",' ')
-
-        print(paragraph)
         paragraph = paragraph.lower()
-        count_word = {}
+        count_word = collections.defaultdict(int)
         for word in paragraph.split():
             if word in banned:
                 continue
-            if word not in count_word:
-                count_word[word] = 1
-            else:
-                count_word[word] += 1
+            count_word[word] += 1
 
         return max(count_word, key=count_word.get)
